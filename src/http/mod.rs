@@ -14,6 +14,10 @@ pub fn fetch(url: &str) -> Result<Response, CfpError> {
             kind: String::from("CfpTime"),
             message: "Undocumented".to_string(),
         }),
+        404 => return Err(CfpError {
+            kind: String::from("CfpTime"),
+            message: "Not Found".to_string(),
+        }),
         _ => return Err(CfpError {
             kind: String::from("CfpTime"),
             message: "Unknown error".to_string(),
