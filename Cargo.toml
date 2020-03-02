@@ -2,7 +2,18 @@
 name = "cfptime"
 version = "0.1.0"
 authors = ["Maverick Kaung <mavjs01@gmail.com>"]
+license = "MIT"
+description = "A library to interface with cfptime.org API."
+repository = "https://github.com/mavjs/cfptime.rs"
+readme = "README.md"
+keywords = ["cfptime", "conferences"]
 edition = "2018"
+exclude = [
+    "testdata/*",
+    "src/upcoming/*",
+    "src/confs/*",
+    "src/main.rs",
+]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
