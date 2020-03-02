@@ -1,4 +1,3 @@
-use reqwest::Client;
 use serde_json::from_str;
 use super::{http::fetch, CfpTime, Conf, CfpError};
 
@@ -29,16 +28,15 @@ impl <'a>CfpTime<'a> {
     /// use cfptime::*;
     ///
     /// let cfps = CfpTime::new();
-    /// cfps.get_cfp_id(1038i32);
+    /// cfps.get_cfp_id(5i32);
     ///```
-    pub fn get_cfp_id(self, id: i32) -> Conf {
+    pub fn get_cfp_id(self, id: i32) -> Result<Conf, CfpError> {
         //let url = &[self.endpoint, "cfps", &id.to_string()].join("/");
         let url = format!("{}/cfps/{}", self.endpoint, &id.to_string());
-        let mut resp = Client::new()
-            .get(&url)
-            .send()
-            .unwrap();
+        let mut resp = fetch(&url)?;
         let body: &str = &resp.text().unwrap();
-        from_str(&body).unwrap()
+        let conf: Conf = from_str(&body).unwrap();
+
+        Ok(conf)
     }
 }
