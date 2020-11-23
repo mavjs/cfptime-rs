@@ -7,6 +7,7 @@ license = "MIT"
 description = "A library to interface with cfptime.org API."
 repository = "https://github.com/mavjs/cfptime.rs"
 readme = "README.md"
+documentation = "https://docs.rs/cfptime-api"
 keywords = ["cfptime", "conferences"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

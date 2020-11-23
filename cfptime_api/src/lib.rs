@@ -6,7 +6,23 @@
  * Example:
  *
  * ```
- * use cfptime_api::*;
+ * use cfptime_api::{CFPTime, Conf};
+ *
+ * async fn get_all_cfps() {
+ *     let cfptime = CFPTime::new();
+ *
+ *     let confs: Vec<Conf> = cfptime.get_cfps().await.unwrap();
+ *     for conf in confs.clone().iter() {
+ *         println!(
+ *             "#{:?} - Name: {:?}, Country: {:?}, Website: {:?}",
+ *             conf.id,
+ *             conf.name,
+ *             conf.country,
+ *             conf.website
+ *         );
+ *     }
+ * }
+ * ```
  */
 use std::error;
 use std::fmt;
