@@ -1,24 +1,22 @@
 [package]
 name = "cfptime"
 version = "0.1.0"
+edition = "2021"
 authors = ["Maverick Kaung <mavjs01@gmail.com>"]
 license = "MIT"
 description = "A library to interface with cfptime.org API."
 repository = "https://github.com/mavjs/cfptime.rs"
 readme = "README.md"
 keywords = ["cfptime", "conferences"]
-edition = "2018"
-exclude = [
-    "testdata/*",
-    "src/upcoming/*",
-    "src/confs/*",
-    "src/main.rs",
-]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-reqwest = "0.9.22"
-serde = "1.0.102"
-serde_json = "1.0.41"
-serde_derive = "1.0.102"
+reqwest = { version = "0.11.20", features = ["json", "rustls-tls"], default-features = false }
+reqwest-middleware = "0.2.3"
+reqwest-retry = "0.2.3"
+reqwest-tracing = { version = "0.4.6", features = ["opentelemetry_0_18"] }
+serde = { version = "1.0.188", features = ["derive"] }
+
+[dev-dependencies]
+tokio = { version = "1.32.0", features = ["full"] }
